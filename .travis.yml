@@ -20,4 +20,3 @@ script:
   - caravel db upgrade
   - caravel init
   - caravel load_examples
-  - caravel runserver -d
