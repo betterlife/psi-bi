@@ -1,1 +1,1 @@
-web:caravel runserver -w 2
+web: caravel runserver -w 2 -p $PORT
