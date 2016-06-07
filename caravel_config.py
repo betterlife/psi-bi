@@ -21,7 +21,8 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 # Caravel specifix config
 # ---------------------------------------------------------
 ROW_LIMIT = 50000
-WEBSERVER_THREADS = 8
+WEBSERVER_THREADS = 2
+CARAVEL_WORKERS = 2
 
 CARAVEL_WEBSERVER_PORT = 8088
 CARAVEL_WEBSERVER_TIMEOUT = 60
@@ -36,7 +37,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY') # noqa
 SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/caravel.db'
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
 # SQLALCHEMY_DATABASE_URI = 'postgresql://caravel:caravel@localhost/caravel'
-SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') 
+SQLALCHEMY_DATABASE_URI = os.environ.get('CARAVEL_DATABASE_URL')
 
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True
@@ -60,7 +61,7 @@ APP_NAME = "Caravel"
 # tz.tzutc() : Using utc timezone
 # tz.tzlocal() : Using local timezone
 # other tz can be overridden by providing a local_config
-DRUID_IS_ACTIVE = True
+DRUID_IS_ACTIVE = False
 DRUID_TZ = tz.tzutc()
 
 # ----------------------------------------------------
