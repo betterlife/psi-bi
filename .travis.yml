@@ -20,3 +20,13 @@ script:
   - caravel db upgrade
   - caravel init
   - caravel load_examples
+  
+deploy:
+  - provider: openshift
+    skip_cleanup: true
+    user: $OPENSHIFT_USER
+    password: $OPENSHIFT_PASS
+    domain: betterlife
+    app: bi
+    on:
+      all_branches: true
