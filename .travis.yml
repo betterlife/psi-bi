@@ -1,30 +1,24 @@
 sudo: false
 language: python
 python:
-  - '2.7'
-
+- '2.7'
 env:
   global:
-    - CARAVEL_DATABASE_URL=postgresql://localhost/psi_bi_test
-
+  - CARAVEL_DATABASE_URL=postgresql://localhost/psi_bi_test
 services:
-  - postgresql
-
+- postgresql
 before_script:
-  - psql -U postgres -c 'CREATE DATABASE psi_bi_test;'
-
+- psql -U postgres -c 'CREATE DATABASE psi_bi_test;'
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 script:
-  - caravel db upgrade
-  - caravel init
-  - caravel load_examples
-  
+- caravel db upgrade
+- caravel init
+- caravel load_examples
 deploy:
   provider: heroku
   api_key:
-    secure: f0rWigeIF6dUiF0H4/fZNov/es33QQaEsXtzlZDjAGN7j5wRawSJfmHT/3O5Olhragww3Kgs5Wv8ejiU4JwHxVeU4kl2hUF+Ih4H4i87WBoGRm8/f6OYtGASN1HflhZzzcSDe4FsXRD6a0u9p/O9orF839ag8Bx+WJyqQngACI24Nm4LqhkPYSkGKpb7R0Wc5TT602SXBVOa49RsJ/eIZaFTqRGSpgjN2KtOv3YbZmPkyzM2aErFMg1uc+vMs+Ln6hQb5+xtDrb041V8bNPsPn/oRexWlErdXkxUAnu+m5MIHFErc75I7+fbB6m+nAtyNAkpmE8hDWGqj80Y1RU4WaCjpG5JEo4qmaZfvd5QdtC8yw0W2ZKVUEgtDcPx0SSqX9lbHNNfuKpQ60XVPdiq9WjYHLff2BOV5OhRW6et7u7Lqlyqqy4K/+3ieIcwGaYuLUK4DMbv7/V9ttk/gwv9liFlxCgEzj3WDB5SMLQblsnenAI9W90c5DR1nsPkciq+7OJ9scpbtG826FQQi6NLpxAItifMBL8ouRNKelSlFnfTeWrv/0qPW7iU46DnOEKQs6F//j7wB0L6x12MRy93UfVVu1+4jnOeKnGljjQA1fk9123PHHRonFBaGRu2tTmSGZLiBZlOfi/8py/ZkrSSFzZ9NS6biDktPXDcg6uq/r0=
+    secure: CCl7KwEYVIP4EZC7eB3dpWtZYGWWUJaFY0+vauuor0gYvhnkRhD88jRujqsPxRg2fqPF+ndKd5qEckPtFwQ7mxRoG2ocfeisaKg/LezHyA11pruV+jRxmv/r91MKuvut2Kk5TOPsDj6ARz87tAIFKutCJ4XHoY4NxJLeb1XSctQXjZb4QhJ7wostqr2+KhhUsIHFz12V4xL5x8o/uvZZM0+PBUt/aNqaJxUQmTuFcoAXyuMby/+vHGZUQrCzbYa+/M6qlq1hzsJoomFxM92WrQcoacFzp9lZDKqmU700baibvhI99VQ+A7C6tK25zcMUpAzQYCS+oDvw1OauvCPHfWYnLMKe2Q1vLWc/VroOID7G9aJ1rsb+GF/8c0PnGPKie3Ozta92dQBKEzNnUFGbai+xTmnBV0VWlmdu7UOj9zDm4AnD34qhrX5B7o9LWfkc7RSBUZIhY3zw3JctL941VFJmd3gfI5bv0j9bIItqV/gxOz7ORehaxN54yqgExT3REyxdQDUsCM4pg8Eoj6baYo9qczlt4ExuE6wao1099dnmB5AOu2rNe8OWqPQQArY09Ry/QpiRRLi8HX+8CVmVJQiEMNymZQFDftqXcZ3Es7iKO1j6J5DmZC0F4pAbmxNycvzVCensw9ngsLohv4/vagpGiA5+R/OgfPxTLakqJWc=
   app: psi-bi
   on:
     repo: betterlife/psi-bi
